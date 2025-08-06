@@ -11,8 +11,8 @@ public class MusicSettingPanel extends JPanel {
 
     public MusicSettingPanel(JPanel panel,CardLayout cardLayout) {
         setLayout(null);
-        musicPanel = new ImageIcon("D:/WhacAMole/src/View/MenuPanel.png").getImage();
-        background = new ImageIcon("D:/WhacAMole/src/View/button.png").getImage();
+        musicPanel = new ImageIcon("assets/background.png").getImage();
+        background = new ImageIcon("assets/button.png").getImage();
         setLayout(null);
 
         JLabel label = new JLabel("Music");
@@ -30,7 +30,7 @@ public class MusicSettingPanel extends JPanel {
         back.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 15));
         back.setBackground(new Color(150,75,0));
         back.setForeground(Color.BLACK);
-        back.setBounds(5,700,100,30);
+        back.setBounds(5,600,100,30);
         back.setOpaque(false);
         back.setFocusable(false);
         back.setBorderPainted(false);
@@ -44,7 +44,7 @@ public class MusicSettingPanel extends JPanel {
         super.paintComponent(g);
         g.drawImage(musicPanel, 0, 0, getWidth(), getHeight(), this);
         g.drawImage(background,60,490,150,50,this);
-        g.drawImage(background,10,690,100,50,this);
+        g.drawImage(background,10,590,100,50,this);
 
     }
 }

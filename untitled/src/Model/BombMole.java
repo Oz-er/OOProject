@@ -15,8 +15,8 @@ public class BombMole extends Mole {
                 "electrode_sound.wav"
         );
 
-        // Shrink the hitbox manually to be smaller than full image
-        int margin = 20; // Feel free to tweak this
+//----------------FOR HITBOX RESIZE-------------------
+        int margin = 20;
         hitbox = new Rectangle(
                 this.x + margin,
                 this.y + margin,

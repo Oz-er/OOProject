@@ -13,7 +13,7 @@ public class BlackMole extends Mole {
 
     @Override
     public void onHit(GameLogic logic) {
-        logic.decreaseScore(5);
+        logic.decreaseScore(10);
         playHitSound();
         hide();
     }

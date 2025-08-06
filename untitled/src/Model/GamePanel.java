@@ -41,9 +41,9 @@ public class GamePanel extends JPanel implements MouseListener {
     private final CardLayout cardLayout;
 
     // === Constructors ===
-    public GamePanel() {
-        this(1, new GameLogic(), null, null);
-    }
+//    public GamePanel() {
+//        this(1, new GameLogic(), null, null);
+//    }
 
     public GamePanel(int level, GameLogic logic, JPanel parentPanel, CardLayout cardLayout) {
         this.logic = logic;
@@ -127,7 +127,7 @@ public class GamePanel extends JPanel implements MouseListener {
 
             int holeIndex = rand.nextInt(9);
             int roll = rand.nextInt(100);
-            int moleType = (roll < 50) ? 0 : (roll < 85) ? 1 : 2;
+            int moleType = (roll < 70) ? 0 : (roll < 85) ? 1 : 2;
 
             Point pos = calculateMolePosition(holeIndex);
             currentMole = switch (moleType) {
@@ -213,8 +213,28 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     // === Mouse Events ===
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        if (!logic.isRunning() || currentMole == null || !currentMole.isVisible()) return;
+//
+//        if (currentMole.isHit(e.getX(), e.getY())) {
+//            currentMole.onHit(logic);
+//            currentMole.hide();
+//            currentMole = null;
+//            currentMoleHoleIndex = -1;
+//            if (hideTimer != null) hideTimer.stop();
+//            repaint();
+//
+//            if (logic.getScore() >= logic.getTargetScore()) {
+//                stopAllTimers();
+//                logic.updateProgress();
+//                showLevelCompletionDialog();
+//            }
+//        }
+//    }
+
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {  // Change mouseClicked to mousePressed
         if (!logic.isRunning() || currentMole == null || !currentMole.isVisible()) return;
 
         if (currentMole.isHit(e.getX(), e.getY())) {
@@ -301,7 +321,9 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     // === Unused Mouse Events ===
-    public void mousePressed(MouseEvent e) {}
+// === Unused Mouse Events ===
+    public void mouseClicked(MouseEvent e) {}
+//    public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}

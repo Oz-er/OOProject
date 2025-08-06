@@ -51,13 +51,13 @@ public abstract class Mole {
     }
 
     // Optional: Update hitbox if mole is ever moved (not currently used)
-    public void setPosition(int newX, int newY) {
-        this.x = newX;
-        this.y = newY;
-        if (hitbox != null) {
-            hitbox.setBounds(newX, newY, width, height);
-        }
-    }
+//    public void setPosition(int newX, int newY) {
+//        this.x = newX;
+//        this.y = newY;
+//        if (hitbox != null) {
+//            hitbox.setBounds(newX, newY, width, height);
+//        }
+//    }
 
     private void loadSound(String soundFile) {
         try {

@@ -4,22 +4,22 @@ package Control;
 public class LevelConfig {
     public static int getTarget(int level) {
         return switch (level) {
-            case 1 -> 200;
-            case 2 -> 250;
-            case 3 -> 300;
-            case 4 -> 350;
-            case 5 -> 400;
+            case 1 -> 300;
+            case 2 -> 400;
+            case 3 -> 500;
+            case 4 -> 600;
+            case 5 -> 800;
             default -> 200;
         };
     }
 
     public static int getMoleDelay(int level) {
         return switch (level) {
-            case 1 -> 1200;
-            case 2 -> 1000;
-            case 3 -> 900;
-            case 4 -> 850;
-            case 5 -> 850;
+            case 1 -> 1000;
+            case 2 -> 700;
+            case 3 -> 650;
+            case 4 -> 600;
+            case 5 -> 550;
             default -> 1200;
         };
     }
