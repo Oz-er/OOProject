@@ -34,29 +34,34 @@ public class MainMenuPanel extends JPanel {
         });
 
 
-        //High Score
-        JButton scoreButton = new JButton("Score");
-        scoreButton.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 16));
-        scoreButton.setBackground(new Color(150,75,0));
-        scoreButton.setSize(130,30);
-        scoreButton.setLocation(110,460);
-        scoreButton.setOpaque(false);
-        scoreButton.setFocusable(false);
-        scoreButton.setVisible(true);
-        scoreButton.setBorderPainted(false);
-        add(scoreButton);
+        //How to Play
+        JButton playButton = new JButton("How to Play");
+        playButton.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 16));
+        playButton.setBackground(new Color(150,75,0));
+        playButton.setSize(130,30);
+        playButton.setLocation(110,460);
+        playButton.setOpaque(false);
+        playButton.setFocusable(false);
+        playButton.setVisible(true);
+        playButton.setBorderPainted(false);
+        add(playButton);
+        playButton.addActionListener(e -> cardLayout.show(panel, "HowToPlay"));
 
         //music button
-        JButton musicButton = new JButton("Music");
+        JLabel musicButton = new JLabel("Music");
         musicButton.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 16));
         musicButton.setBackground(new Color(150,75,0));
         musicButton.setSize(130,30);
-        musicButton.setLocation(110,510);
+        musicButton.setLocation(150,510);
         musicButton.setFocusable(false);
         musicButton.setOpaque(false);
-        musicButton.setBorderPainted(false);
+        //  musicButton.setBorderPainted(false);
         musicButton.setVisible(true);
-        musicButton.addActionListener(e -> cardLayout.show(panel, "MusicSettingPanel"));
+        // musicButton.addActionListener(e -> cardLayout.show(panel, "MusicSettingPanel"));
+
+        SwitchButton toggle = new SwitchButton();
+        toggle.setBounds(250, 510, 70, 30);
+        add(toggle);
         add(musicButton);
 
         //about button

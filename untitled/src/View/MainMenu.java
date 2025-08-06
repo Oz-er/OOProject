@@ -39,7 +39,7 @@ public class MainMenu {
         LevelSelectPanel levelSelectPanel = new LevelSelectPanel(panel, cardLayout, logic);
 
 //        panel.add(new MainMenuPanel(panel,cardLayout),"MainMenuPanel");
-        panel.add(new MusicSettingPanel(panel, cardLayout),"MusicSettingPanel");
+        panel.add(new HowToPlay(panel, cardLayout),"HowToPlay");
 
 
 
