@@ -3,6 +3,7 @@ package Model;
 import Control.GameLogic;
 import Control.LevelConfig;
 import View.LevelSelectPanel;
+import View.CustomDialog;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
@@ -39,11 +40,6 @@ public class GamePanel extends JPanel implements MouseListener {
     // === Navigation ===
     private final JPanel parentPanel;
     private final CardLayout cardLayout;
-
-    // === Constructors ===
-//    public GamePanel() {
-//        this(1, new GameLogic(), null, null);
-//    }
 
     public GamePanel(int level, GameLogic logic, JPanel parentPanel, CardLayout cardLayout) {
         this.logic = logic;
@@ -213,28 +209,8 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     // === Mouse Events ===
-//    @Override
-//    public void mouseClicked(MouseEvent e) {
-//        if (!logic.isRunning() || currentMole == null || !currentMole.isVisible()) return;
-//
-//        if (currentMole.isHit(e.getX(), e.getY())) {
-//            currentMole.onHit(logic);
-//            currentMole.hide();
-//            currentMole = null;
-//            currentMoleHoleIndex = -1;
-//            if (hideTimer != null) hideTimer.stop();
-//            repaint();
-//
-//            if (logic.getScore() >= logic.getTargetScore()) {
-//                stopAllTimers();
-//                logic.updateProgress();
-//                showLevelCompletionDialog();
-//            }
-//        }
-//    }
-
     @Override
-    public void mousePressed(MouseEvent e) {  // Change mouseClicked to mousePressed
+    public void mousePressed(MouseEvent e) {
         if (!logic.isRunning() || currentMole == null || !currentMole.isVisible()) return;
 
         if (currentMole.isHit(e.getX(), e.getY())) {
@@ -265,7 +241,9 @@ public class GamePanel extends JPanel implements MouseListener {
                         + "\n\n🎉 CONGRATULATIONS! 🎉\nYou have completed all levels!";
             }
 
-            JOptionPane.showMessageDialog(this, message, "Level Completed!", JOptionPane.INFORMATION_MESSAGE);
+            CustomDialog dialog = new CustomDialog((JFrame) SwingUtilities.getWindowAncestor(this),
+                    "Level Completed!", message);
+            dialog.setVisible(true);
 
             if (parentPanel != null && cardLayout != null) {
                 LevelSelectPanel levelSelectPanel = new LevelSelectPanel(parentPanel, cardLayout, logic);
@@ -301,8 +279,10 @@ public class GamePanel extends JPanel implements MouseListener {
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", Font.BOLD, 24));
         g2.drawString("Score: " + logic.getScore(), 20, 30);
-        g2.drawString("High Score: " + logic.getHighScore(), 20, 60);
-        g2.drawString("Time Left: " + logic.getTimeLeft() + "s", 20, 90);
+        g2.drawString("Time Left: " + logic.getTimeLeft() + "s", 20, 60);
+
+        // Draw target score in top right
+        g2.drawString("Target: " + logic.getTargetScore(), getWidth() - 200, 30);
 
         if (!logic.isRunning()) {
             g2.setFont(new Font("Arial", Font.BOLD, 36));
@@ -321,9 +301,7 @@ public class GamePanel extends JPanel implements MouseListener {
     }
 
     // === Unused Mouse Events ===
-// === Unused Mouse Events ===
     public void mouseClicked(MouseEvent e) {}
-//    public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}

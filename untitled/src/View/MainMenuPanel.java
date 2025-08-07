@@ -1,4 +1,5 @@
 package View;
+import Control.MusicManager;
 
 import Control.GameLogic;
 
@@ -33,9 +34,8 @@ public class MainMenuPanel extends JPanel {
             cardLayout.show(panel, "LevelSelectPanel");
         });
 
-
         //How to Play
-        JButton playButton = new JButton("How to Play");
+        JButton playButton = new JButton("Help");
         playButton.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 16));
         playButton.setBackground(new Color(150,75,0));
         playButton.setSize(130,30);
@@ -55,12 +55,19 @@ public class MainMenuPanel extends JPanel {
         musicButton.setLocation(150,510);
         musicButton.setFocusable(false);
         musicButton.setOpaque(false);
-        //  musicButton.setBorderPainted(false);
         musicButton.setVisible(true);
-        // musicButton.addActionListener(e -> cardLayout.show(panel, "MusicSettingPanel"));
 
         SwitchButton toggle = new SwitchButton();
         toggle.setBounds(250, 510, 70, 30);
+
+        // Set initial state and add event listener
+        MusicManager musicManager = MusicManager.getInstance();
+        toggle.setSelected(musicManager.isMusicEnabled());
+
+        toggle.addEventSelected(selected -> {
+            musicManager.setMusicEnabled(selected);
+        });
+
         add(toggle);
         add(musicButton);
 
@@ -76,6 +83,9 @@ public class MainMenuPanel extends JPanel {
         aboutButton.setVisible(true);
         add(aboutButton);
 
+        aboutButton.addActionListener(e -> cardLayout.show(panel, "AboutPanel"));
+
+
         //exit button
         JButton exitButton = new JButton("Exit");
         exitButton.setFont(new Font("Tahoma", Font.BOLD + Font.ITALIC, 16));
@@ -86,7 +96,10 @@ public class MainMenuPanel extends JPanel {
         exitButton.setOpaque(false);
         exitButton.setBorderPainted(false);
         exitButton.setVisible(true);
-        exitButton.addActionListener(e -> System.exit(0));
+        exitButton.addActionListener(e -> {
+            musicManager.cleanup();
+            System.exit(0);
+        });
         add(exitButton);
     }
 

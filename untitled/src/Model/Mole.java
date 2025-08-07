@@ -39,9 +39,9 @@ public abstract class Mole {
 
 
         // Debug hitbox
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(new Color(255, 0, 0, 120));
-        g2.draw(hitbox);
+//        Graphics2D g2 = (Graphics2D) g;
+//        g2.setColor(new Color(255, 0, 0, 120));
+//        g2.draw(hitbox);
     }
 
     // Simple rectangular hit detection

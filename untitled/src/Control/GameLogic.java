@@ -2,7 +2,6 @@ package Control;
 
 public class GameLogic {
     private int score = 0;
-    private int highScore = 0;
     private int timeLeft = 60;
     private boolean running = true;
     private int currentLevel = 1;
@@ -26,9 +25,7 @@ public class GameLogic {
         if (score >= targetScore && currentLevel == maxUnlockedLevel && maxUnlockedLevel < 5) {
             maxUnlockedLevel++;
         }
-
     }
-
 
     public void increaseScore(int points) {
         score += points;
@@ -40,9 +37,6 @@ public class GameLogic {
 
     public void gameOver() {
         running = false;
-        if (score > highScore) {
-            highScore = score;
-        }
     }
 
     public void reset() {
@@ -60,10 +54,6 @@ public class GameLogic {
         return score;
     }
 
-    public int getHighScore() {
-        return highScore;
-    }
-
     public int getTimeLeft() {
         return timeLeft;
     }
@@ -71,6 +61,7 @@ public class GameLogic {
     public boolean isRunning() {
         return running;
     }
+
     public int getTargetScore() {
         return targetScore;
     }
@@ -78,5 +69,4 @@ public class GameLogic {
     public void setTimeLeft(int time) {
         this.timeLeft = time;
     }
-
 }

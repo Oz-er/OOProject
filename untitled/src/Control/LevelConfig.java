@@ -4,7 +4,7 @@ package Control;
 public class LevelConfig {
     public static int getTarget(int level) {
         return switch (level) {
-            case 1 -> 300;
+            case 1 -> 250;
             case 2 -> 400;
             case 3 -> 500;
             case 4 -> 600;
